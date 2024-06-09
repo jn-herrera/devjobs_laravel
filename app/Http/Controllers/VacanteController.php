@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vacante;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VacanteController extends Controller
 {
@@ -18,5 +20,13 @@ class VacanteController extends Controller
 
     }
 
+    public function edit(Vacante $vacante)
+    {
+        return view('vacantes.edit', [
+            'vacante' => $vacante
+
+        ]);
+
+    }
 
 }

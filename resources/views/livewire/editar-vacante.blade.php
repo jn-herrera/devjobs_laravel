@@ -44,18 +44,18 @@
         <x-input-label for="empresa" :value="__('Empresa')" />
         <x-text-input id="empresa" class="block mt-1 w-full" type="text" wire:model="empresa" :value="old('empresa')"
             placeholder="Empresa: ej. Netflix, Uber, Meta" />
-            @error('empresa')
+        @error('empresa')
             <livewire:mostrar-alerta :message="$message" />
-         @enderror
+        @enderror
     </div>
 
     <div>
         <x-input-label for="ultimo_dia" :value="__('Ultimo dia para postularse')" />
         <x-text-input id="ultimo_dia" class="block mt-1 w-full" type="date" wire:model="ultimo_dia"
             :value="old('ultimo_dia')" />
-            @error('ultimo_dia')
+        @error('ultimo_dia')
             <livewire:mostrar-alerta :message="$message" />
-         @enderror
+        @enderror
     </div>
 
     <div>
@@ -65,14 +65,24 @@
             placeholder="descripcion">
             
     </textarea>
-    @error('descripcion')
+        @error('descripcion')
             <livewire:mostrar-alerta :message="$message" />
-         @enderror
+        @enderror
     </div>
+
+
 
     <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
-        <x-text-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen" accept="image/*"/>
+        <x-text-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen" accept="image/*" />
+
+        <div class="my-5 w-80">
+            <x-input-label :value="__('Imagen actual')" />
+            <img src="{{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen vacante ' . $titulo }}">
+        </div>
+    </div>
+
+    {{--
         <div class="my-5 w-80">
             @if ($imagen)
             Imagen: <img src="{{$imagen->temporaryUrl()}}" alt="">
@@ -80,14 +90,15 @@
             @endif
 
         </div>
-        
-        @error('imagen')
-            <livewire:mostrar-alerta :message="$message" />
-         @enderror
+    --}}
+
+    @error('imagen')
+        <livewire:mostrar-alerta :message="$message" />
+    @enderror
     </div>
 
     <x-primary-button class="w-full justify-center">
-        Crear vacante
+        Guardar
     </x-primary-button>
 
 </form>
