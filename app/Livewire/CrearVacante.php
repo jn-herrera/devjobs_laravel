@@ -31,7 +31,7 @@ class CrearVacante extends Component
         'imagen' => 'required|image|max:1024',
 
     ];
-
+    
     public function crearVacante() {
         $datos = $this->validate();
 
@@ -51,14 +51,15 @@ class CrearVacante extends Component
             'descripcion' => $datos['descripcion'],
             'imagen' => $datos['imagen'],
             'user_id' => auth()->user()->id,
-
         ]);
 
-
         //Crear un mensaje
-
+        session()->flash('mensaje','La vacante se publico correctamente');
 
         //Redireccionar al usuario
+        return redirect()->route('vacantes.index');
+
+
     }
 
 
