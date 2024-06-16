@@ -21,6 +21,8 @@ class EditarVacante extends Component
     public $imagen;
     public $imagen_nueva;
 
+    use WithFileUploads;
+
     protected $rules = [
         'titulo' => 'required|string',
         'salario' => 'required',
@@ -50,7 +52,7 @@ class EditarVacante extends Component
 
         //Validar si existe imagen
         if ($this->imagen_nueva) {
-            $imagen = $this->imagen->store('public/vacantes');
+            $imagen = $this->imagen_nueva->store('public/vacantes');
             $datos['imagen'] = str_replace('public/vacantes/', '', $imagen);
         }
         //Encontrar la vacante a editar

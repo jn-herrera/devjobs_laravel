@@ -81,20 +81,20 @@
             <x-input-label :value="__('Imagen actual')" />
             <img src="{{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen vacante ' . $titulo }}">
         </div>
-    </div>
 
 
-    <div class="my-5 w-80">
-        @if ($imagen_nueva)
-            Imagen nueva: <img src="{{ $imagen_nueva->temporaryUrl() }}" alt="">
-        @endif
+        <div class="my-5 w-80">
+            @if ($imagen_nueva)
+                Imagen nueva:
+                <img src="{{ $imagen_nueva->temporaryUrl() }}">
+            @endif
 
-    </div>
+        </div>
 
 
-    @error('imagen_nueva')
-        <livewire:mostrar-alerta :message="$message" />
-    @enderror
+        @error('imagen_nueva')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
     </div>
 
     <x-primary-button>
