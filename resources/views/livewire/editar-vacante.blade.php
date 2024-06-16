@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-5" wire:submit.prevent="crearVacante">
+<form class="md:w-1/2 space-y-5" wire:submit.prevent="editarVacante">
     <div>
         <x-input-label for="titulo" :value="__('Titulo vacante')" />
         <x-text-input id="titulo" class="block mt-1 w-full" type="text" wire:model="titulo"
@@ -63,7 +63,7 @@
         <textarea wire:model="descripcion" id="descripcion"
             class="border-gray-300 dark:border-gray-700 h-72 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full"
             placeholder="descripcion">
-            
+
     </textarea>
         @error('descripcion')
             <livewire:mostrar-alerta :message="$message" />
@@ -74,7 +74,8 @@
 
     <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
-        <x-text-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen" accept="image/*" />
+        <x-text-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen_nueva"
+            accept="image/*" />
 
         <div class="my-5 w-80">
             <x-input-label :value="__('Imagen actual')" />
@@ -82,22 +83,21 @@
         </div>
     </div>
 
-    {{--
-        <div class="my-5 w-80">
-            @if ($imagen)
-            Imagen: <img src="{{$imagen->temporaryUrl()}}" alt="">
-                
-            @endif
 
-        </div>
-    --}}
+    <div class="my-5 w-80">
+        @if ($imagen_nueva)
+            Imagen nueva: <img src="{{ $imagen_nueva->temporaryUrl() }}" alt="">
+        @endif
 
-    @error('imagen')
+    </div>
+
+
+    @error('imagen_nueva')
         <livewire:mostrar-alerta :message="$message" />
     @enderror
     </div>
 
-    <x-primary-button class="w-full justify-center">
+    <x-primary-button>
         Guardar
     </x-primary-button>
 

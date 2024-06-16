@@ -31,7 +31,7 @@ class CrearVacante extends Component
         'imagen' => 'required|image|max:1024',
 
     ];
-    
+
     public function crearVacante() {
         $datos = $this->validate();
 
@@ -68,7 +68,7 @@ class CrearVacante extends Component
         // Consultar a la BD
         $salarios = Salario::all();
         $categorias = Categoria::all();
-        
+
         return view('livewire.crear-vacante', ['salarios' => $salarios,
     'categorias' => $categorias]);
     }
