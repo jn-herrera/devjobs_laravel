@@ -3,23 +3,29 @@
         Postularme a esta vacante
     </h3>
 
-    <form wire:submit.prevent='postularme' class="w-96 mt-5" action="">
-        <div class="mb-4">
-            <x-input-label for="cv" :value="__('Curriculum en formato PDF')" />
+    @if (session()->has('mensaje'))
+        <p class="uppercase border border-green-600 bg-green-100 text-green-600 font-bold p-2 my-5 rounded-lg text-sm">
+            {{ session('mensaje') }}
+        </p>
+    @else
+        <form wire:submit.prevent='postularme' class="w-96 mt-5" action="">
+            <div class="mb-4">
+                <x-input-label for="cv" :value="__('Curriculum en formato PDF')" />
 
-            <x-text-input id="cv" type="file" wire:model='cv' accept=".pdf" class="block mt-1 w-full" />
-        </div>
+                <x-text-input id="cv" type="file" wire:model='cv' accept=".pdf" class="block mt-1 w-full" />
+            </div>
 
-        @error('cv')
-            <livewire:mostrar-alerta :message="$message"/>
-        @enderror
-
-
+            @error('cv')
+                <livewire:mostrar-alerta :message="$message" />
+            @enderror
 
 
-        <x-primary-button class="my-5">
-            {{ __('Postularme') }}
-        </x-primary-button>
+            <x-primary-button class="my-5">
+                {{ __('Postularme') }}
+            </x-primary-button>
 
-    </form>
+        </form>
+    @endif
+
+
 </div>
