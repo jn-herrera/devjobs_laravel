@@ -15,7 +15,7 @@ Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->midd
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
 
 //Notificaciones
-Route::get('/notificaciones', NotificationController::class);
+Route::get('/notificaciones', NotificationController::class)->name('notificaciones');
 
 
 Route::middleware('auth')->group(function () {
