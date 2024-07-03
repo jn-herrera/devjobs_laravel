@@ -15,7 +15,5 @@
     </head>
     <body>
       <h1>DevJobs</h1>
-       
-
     </body>
 </html>

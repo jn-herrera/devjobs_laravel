@@ -8,13 +8,13 @@
                 class="p-6 text-gray-100 dark:bg-gray-800 border-b border-gray-200 md:flex md:justify-between md:items-center">
                 <div class="leading-10">
                     <a href="{{ route('vacantes.show', $vacante->id) }}" class="text-xl font-bold">{{ $vacante->titulo }}</a>
-                    <p class="text-sm text-gray-600 font-bold">{{ $vacante->empresa }}</p>
-                    <p class="text-sm text-gray-500">Último día: {{ $vacante->ultimo_dia }}</p>
+                    <p class="text-gray-600 font-bold text-white text-sm">{{ $vacante->empresa }}</p>
+                    <p class="text-sm text-gray-500 text-white">Último día: {{ $vacante->ultimo_dia }}</p>
                 </div>
 
                 <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
                     <a href="{{ route('candidatos.index', $vacante) }}"
-                        class="bg-gray-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">Candidatos</a>
+                        class="bg-gray-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">{{ $vacante->candidatos->count() }}Candidatos</a>
                     <a href="{{ route('vacantes.edit', $vacante->id) }}"
                         class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">Editar</a>
                         <button wire:click="$dispatch('mostrarAlerta', { vacanteId: {{ $vacante->id }} })" type="button"
