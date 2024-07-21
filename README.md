@@ -8,7 +8,7 @@
 
 
 <h2>Start</h2>
-php artisan serve
-npm run dev
+<p>1- php artisan serve  - </p>
+<p>2- npm run dev</p>
 
 
